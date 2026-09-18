@@ -26,5 +26,150 @@
     "photos": [
       "https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?w=700&auto=format&fit=crop"
     ]
+  },
+  {
+    "municipality": "Groningen",
+    "date": "8–11 Sep 2026",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Maastricht",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Delft",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "'s-Gravenhage",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "Short for The Hague or Den Haag",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Haarlem",
+    "date": "21 Oct 2018",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Den Helder",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Leiden",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Tilburg",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Middelburg",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "XXX",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Haarlemmermeer",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "Hoofddorp is part of this",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Zaanstad",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "Zaandam is part of this",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Noordwijk",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Zandvoort",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Eindhoven",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Deventer",
+    "date": "9 Sep 2020",
+    "hotel": "XXX",
+    "notes": "",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Leeuwarden",
+    "date": "4 Aug 2019",
+    "hotel": "XXX",
+    "notes": "",
+    "photos": [
+      ""
+    ]
   }
+
 ]

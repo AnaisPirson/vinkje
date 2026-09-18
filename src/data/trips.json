@@ -11,7 +11,7 @@
   },
   {
     "municipality": "Utrecht",
-    "date": "20–22 Sept 2023",
+    "date": "10 Feb 2019",
     "hotel": "Grand Hotel Karel V",
     "notes": "Explored the unique split-level canals and had drinks right on the water cellar wharfs.",
     "photos": [
@@ -38,7 +38,7 @@
   },
   {
     "municipality": "Maastricht",
-    "date": "9 Sep 2020",
+    "date": "1 Oct 2021",
     "hotel": "XXX",
     "notes": "XXX",
     "photos": [
@@ -47,7 +47,7 @@
   },
   {
     "municipality": "Delft",
-    "date": "9 Sep 2020",
+    "date": "19 Dec 2021",
     "hotel": "XXX",
     "notes": "XXX",
     "photos": [
@@ -65,16 +65,16 @@
   },
   {
     "municipality": "Haarlem",
-    "date": "21 Oct 2018",
+    "date": "1 Dec 2018",
     "hotel": "XXX",
-    "notes": "XXX",
+    "notes": "Ground 0...where it all started",
     "photos": [
       ""
     ]
   },
   {
     "municipality": "Den Helder",
-    "date": "9 Sep 2020",
+    "date": "11 Feb 2023",
     "hotel": "XXX",
     "notes": "XXX",
     "photos": [
@@ -92,7 +92,7 @@
   },
   {
     "municipality": "Tilburg",
-    "date": "9 Sep 2020",
+    "date": "14 Feb 2025",
     "hotel": "XXX",
     "notes": "XXX",
     "photos": [
@@ -101,7 +101,7 @@
   },
   {
     "municipality": "Middelburg",
-    "date": "9 Sep 2020",
+    "date": "4 Nov 2023",
     "hotel": "XXX",
     "notes": "XXX",
     "photos": [
@@ -119,16 +119,16 @@
   },
   {
     "municipality": "Zaanstad",
-    "date": "9 Sep 2020",
+    "date": "24 Oct 2018",
     "hotel": "XXX",
-    "notes": "Zaandam is part of this",
+    "notes": "Zaandam & Buitenhuizen is part of this",
     "photos": [
       ""
     ]
   },
   {
     "municipality": "Noordwijk",
-    "date": "9 Sep 2020",
+    "date": "18 Feb 2024",
     "hotel": "XXX",
     "notes": "",
     "photos": [
@@ -146,7 +146,7 @@
   },
   {
     "municipality": "Eindhoven",
-    "date": "9 Sep 2020",
+    "date": "1 Oct 2019",
     "hotel": "XXX",
     "notes": "",
     "photos": [
@@ -155,7 +155,7 @@
   },
   {
     "municipality": "Deventer",
-    "date": "9 Sep 2020",
+    "date": "July 2025",
     "hotel": "XXX",
     "notes": "",
     "photos": [
@@ -164,9 +164,18 @@
   },
   {
     "municipality": "Leeuwarden",
-    "date": "4 Aug 2019",
-    "hotel": "XXX",
-    "notes": "",
+    "date": "26 Aug 2019",
+    "hotel": "a campground",
+    "notes": "Went here for psy-fi festival...does it count?",
+    "photos": [
+      ""
+    ]
+  },
+  {
+    "municipality": "Beverwijk",
+    "date": "27 Jul 2024",
+    "hotel": "",
+    "notes": "Cycle to a massive market",
     "photos": [
       ""
     ]

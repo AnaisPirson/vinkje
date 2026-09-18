@@ -1,5 +1,30 @@
-export default function Drawer({ selectedCity, trip, isUnlocked, onUnlockRequest, onClose }) {
+import { useState } from 'react';
+
+export default function Drawer({ 
+  selectedCity, 
+  trip, 
+  isUnlocked, 
+  mode, 
+  onSavePersonalTrip, 
+  onUnlockRequest, 
+  onClose 
+}) {
   if (!selectedCity) return null;
+
+  const [date, setDate] = useState('');
+  const [hotel, setHotel] = useState('');
+  const [notes, setNotes] = useState('');
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    onSavePersonalTrip({
+      municipality: selectedCity,
+      date: date || 'Recently visited',
+      hotel: hotel || 'Personal Stay',
+      notes: notes || 'No notes added.',
+      photos: []
+    });
+  };
 
   return (
     <aside className="drawer">
@@ -14,8 +39,7 @@ export default function Drawer({ selectedCity, trip, isUnlocked, onUnlockRequest
         <div className="trip-details">
           <p className="trip-date">🗓 {trip.date}</p>
 
-          {/* If friend unlocked: Show the goods! */}
-          {isUnlocked ? (
+          {isUnlocked || mode === 'personal' ? (
             <div className="unlocked-content">
               <div className="section">
                 <h4>Stayed at</h4>
@@ -23,7 +47,7 @@ export default function Drawer({ selectedCity, trip, isUnlocked, onUnlockRequest
               </div>
 
               <div className="section">
-                <h4>Trip Highlights & Notes</h4>
+                <h4>Highlights & Notes</h4>
                 <p className="notes">{trip.notes}</p>
               </div>
 
@@ -39,20 +63,53 @@ export default function Drawer({ selectedCity, trip, isUnlocked, onUnlockRequest
               )}
             </div>
           ) : (
-            /* If public/recruiter view: Show privacy lock */
             <div className="locked-box">
               <span className="lock-icon">🔒</span>
               <h3>Travel Memories Locked</h3>
-              <p>Hotel recommendations, personal notes, and photo galleries are private.</p>
+              <p>Hotel stays, personal notes, and photo galleries are private.</p>
               <button className="unlock-action-btn" onClick={onUnlockRequest}>
                 Have a Friend Pass?
               </button>
             </div>
           )}
         </div>
+      ) : mode === 'personal' ? (
+        /* Form for users to scratch off their own trips */
+        <form className="personal-log-form" onSubmit={handleFormSubmit}>
+          <p className="form-intro">You haven't scratched this off yet! Add your stay to unlock it.</p>
+
+          <label>When did you visit?</label>
+          <input 
+            type="text" 
+            placeholder="e.g. Summer 2023" 
+            value={date} 
+            onChange={(e) => setDate(e.target.value)} 
+            required 
+          />
+
+          <label>Where did you stay?</label>
+          <input 
+            type="text" 
+            placeholder="e.g. Hotel V, Airbnb, Camping" 
+            value={hotel} 
+            onChange={(e) => setHotel(e.target.value)} 
+          />
+
+          <label>Memories & Notes:</label>
+          <textarea 
+            placeholder="What was your favorite moment?" 
+            value={notes} 
+            onChange={(e) => setNotes(e.target.value)} 
+          />
+
+          <button type="submit" className="scratch-btn">
+            🍊 Scratch Off & Save!
+          </button>
+        </form>
       ) : (
         <div className="empty-state">
-          <p>You haven't scratched this municipality off yet!</p>
+          <p>The author hasn't visited {selectedCity} yet.</p>
+          <p className="hint">Switch to "My Scratch Map" above to start logging your own!</p>
         </div>
       )}
     </aside>

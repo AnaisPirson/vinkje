@@ -1,33 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import myTrips from '../data/trips.json';
 
-export default function Map({ onSelectCity }) {
+export default function Map({ trips, onSelectCity }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const geoJsonLayerRef = useRef(null);
   const [geoData, setGeoData] = useState(null);
 
-  // 1. Fetch from OpenDataSoft Public Portal (WGS84 GPS coords, All 342 Dutch Municipalities)
+  // 1. Fetch GeoJSON
   useEffect(() => {
-    const URL =
-      'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-netherlands-gemeente/exports/geojson';
-
-    fetch(URL)
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        console.log('✅ Loaded municipalities:', data.features.length);
-        console.log('Sample city name:', data.features[0].properties.gem_name);
-        setGeoData(data);
-      })
+    fetch('https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-netherlands-gemeente/exports/geojson')
+      .then((res) => res.json())
+      .then((data) => setGeoData(data))
       .catch((err) => console.error('Error loading GeoJSON:', err));
   }, []);
 
-  // 2. Initialize the Base Map
+  // 2. Initialize Base Map
   useEffect(() => {
     if (mapInstanceRef.current) return;
 
@@ -42,17 +31,12 @@ export default function Map({ onSelectCity }) {
       minZoom: 7,
       maxZoom: 13,
       maxBounds: netherlandsBounds,
-      maxBoundsViscosity: 1.0
+      maxBoundsViscosity: 1.0,
+      zoomControl: false // Move zoom control away from header
     });
 
-    // L.tileLayer(
-    //   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=cb1_3piw_1_6aee0f1b3b3753139433bab3',
-    //   {
-    //     attribution: '&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap',
-    //     maxZoom: 20
-    //   }
-    // ).addTo(map);
-    // Clean Dark Canvas: Oceans & coastlines, but ZERO roads!
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
     L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
       {
@@ -60,7 +44,6 @@ export default function Map({ onSelectCity }) {
         maxZoom: 16
       }
     ).addTo(map);
-
 
     mapInstanceRef.current = map;
 
@@ -70,25 +53,26 @@ export default function Map({ onSelectCity }) {
     };
   }, []);
 
-  // 3. Draw & Color Municipalities
-  // 3. Draw & Color Municipalities
+  // 3. Draw & Color Municipalities (Reacts dynamically to trips changes!)
   useEffect(() => {
     if (!mapInstanceRef.current || !geoData) return;
 
-    // Helper: Safely unwraps the city name whether it's an Array or a String
+    if (geoJsonLayerRef.current) {
+      mapInstanceRef.current.removeLayer(geoJsonLayerRef.current);
+    }
+
     const getCityName = (feature) => {
       const prop = feature.properties.gem_name;
       if (!prop) return 'Unknown';
       return Array.isArray(prop) ? prop[0] : String(prop);
     };
 
-    // Check if visited
     const isVisited = (feature) => {
       const prop = feature.properties.gem_name;
       if (!prop) return false;
       const names = Array.isArray(prop) ? prop : [prop];
 
-      return myTrips.some((trip) =>
+      return trips.some((trip) =>
         names.some((name) => name.toLowerCase() === trip.municipality.toLowerCase())
       );
     };
@@ -98,8 +82,8 @@ export default function Map({ onSelectCity }) {
         const visited = isVisited(feature);
 
         return {
-          fillColor: visited ? '#ff7700' : '#1e1e24', // Dutch Orange vs Dark Slate
-          weight: visited ? 2 : 0.8,
+          fillColor: visited ? '#ff7700' : '#1e1e24',
+          weight: visited ? 1.5 : 0.8,
           opacity: 0.9,
           color: visited ? '#ffaa40' : '#444450',
           fillOpacity: visited ? 0.5 : 0.2
@@ -108,42 +92,28 @@ export default function Map({ onSelectCity }) {
       onEachFeature: (feature, layer) => {
         const cityName = getCityName(feature);
         const visited = isVisited(feature);
-        
 
-        // Tooltip on hover
         layer.bindTooltip(
-          `<strong>${cityName}</strong>${visited ? ' 🍊 (Visited)' : ''}`,
+          `<strong>${cityName}</strong>${visited ? ' 🍊' : ''}`,
           { direction: 'top', sticky: true }
         );
 
-        // Hover animations
         layer.on({
           mouseover: (e) => {
             const l = e.target;
-            l.setStyle({ weight: 3, color: '#ffffff', fillOpacity: 0.9 });
+            l.setStyle({ weight: 3, color: '#ffffff', fillOpacity: 0.8 });
             l.bringToFront();
           },
           mouseout: (e) => {
             geoJsonLayerRef.current.resetStyle(e.target);
+          },
+          click: () => {
+            onSelectCity(cityName);
           }
         });
-        layer.on({
-       mouseover: (e) => {
-         const l = e.target;
-         l.setStyle({ weight: 3, color: '#ffffff', fillOpacity: 0.8 });
-         l.bringToFront();
-       },
-       mouseout: (e) => {
-         geoJsonLayerRef.current.resetStyle(e.target);
-       },
-       click: () => {
-         onSelectCity(cityName); // <--- Triggers the drawer!
-       }
-     });
-
       }
     }).addTo(mapInstanceRef.current);
-  }, [geoData]);
+  }, [geoData, trips]);
 
   return <div ref={mapContainerRef} style={{ width: '100vw', height: '100vh' }} />;
 }

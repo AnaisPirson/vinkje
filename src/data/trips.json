@@ -1,0 +1,30 @@
+[
+  {
+    "municipality": "Amsterdam",
+    "date": "14–16 April 2023",
+    "hotel": "The Hoxton, Herengracht",
+    "notes": "Rented bikes along the canal belt, had apple pie at Winkel 43, and spent an afternoon at the Rijksmuseum.",
+    "photos": [
+      "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=700&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=700&auto=format&fit=crop"
+    ]
+  },
+  {
+    "municipality": "Utrecht",
+    "date": "20–22 Sept 2023",
+    "hotel": "Grand Hotel Karel V",
+    "notes": "Explored the unique split-level canals and had drinks right on the water cellar wharfs.",
+    "photos": [
+      "https://images.unsplash.com/photo-1584003564911-a7a321c84e1c?w=700&auto=format&fit=crop"
+    ]
+  },
+  {
+    "municipality": "Rotterdam",
+    "date": "10–12 Jan 2024",
+    "hotel": "Hotel New York",
+    "notes": "Walked across the Erasmus Bridge, checked out the Cube Houses, and had dinner at the Markthal.",
+    "photos": [
+      "https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?w=700&auto=format&fit=crop"
+    ]
+  }
+]

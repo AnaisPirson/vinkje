@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #121214;
+}
+/* Turns OpenStreetMap into a sleek dark-mode map */
+/* Apply dark mode filter to the entire map tile container */
+/* .leaflet-tile-pane {
+  filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%) !important;
+} */
+
+/* Make the map background match dark mode */
+.leaflet-container {
+  background-color: #121214 !important;
+}
+/* Slide-out Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 90vw;
+  height: 100vh;
+  background: rgba(18, 18, 22, 0.95);
+  backdrop-filter: blur(16px);
+  border-left: 1px solid #2e2e38;
+  padding: 2rem 1.5rem;
+  z-index: 3000;
+  overflow-y: auto;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+  animation: slideIn 0.25s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: #25252f;
+  border: 1px solid #3e3e4f;
+  color: #ccc;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: #ff7700;
+  color: #fff;
+  border-color: #ff7700;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 119, 0, 0.2);
+  color: #ffaa40;
+  border: 1px solid rgba(255, 119, 0, 0.4);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.drawer-header h2 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.trip-date {
+  color: #8e8e9f;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.section h4 {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: #7b7b8f;
+  margin-bottom: 0.4rem;
+}
+
+.hotel-name {
+  font-size: 1rem;
+  color: #f0f0f5;
+}
+
+.notes {
+  line-height: 1.5;
+  color: #d0d0dc;
+  font-size: 0.95rem;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.photo-gallery img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #2e2e38;
+}
+
+/* Locked State */
+.locked-box {
+  background: #18181f;
+  border: 1px dashed #3a3a4a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.lock-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.locked-box h3 {
+  font-size: 1.1rem;
+  color: #eee;
+  margin-bottom: 0.5rem;
+}
+
+.locked-box p {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+}
+
+.unlock-action-btn {
+  background: #ff7700;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.unlock-action-btn:hover {
+  background: #e66a00;
+}
+
+/* Mobile responsive drawer */
+@media (max-width: 600px) {
+  .drawer {
+    width: 100vw;
+    max-width: 100vw;
+    border-left: none;
+  }
+}

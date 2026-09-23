@@ -69,7 +69,7 @@ export default function App() {
   );
 
   return (
-    <main style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+    <main style={{ position: 'relative', width: '100vw', height: '100dvh', overflow: 'hidden' }}>
       <Header
         mode={mode}
         setMode={(newMode) => {

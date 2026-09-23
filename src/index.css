@@ -289,15 +289,15 @@ body, html, #root {
 /* Timeline Slider */
 /* Responsive Timeline Floating Widget */
 .timeline-container {
-  position: absolute;
-  /* env(safe-area-inset-bottom) pushes it ABOVE the iPhone Safari bar */
-  bottom: calc(1.8rem + env(safe-area-inset-bottom, 0px));
+  position: fixed; /* <--- Pinned directly to the screen glass */
+  bottom: calc(2rem + env(safe-area-inset-bottom, 10px)); /* Generous clearance above the bar */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2000;
-  width: calc(100% - 2rem);
-  max-width: 320px; /* Fits comfortably on any mobile screen */
-  pointer-events: none; /* Allows panning map around the edges */
+  z-index: 2500; /* Above Leaflet controls */
+  width: calc(100% - 2.5rem);
+  max-width: 320px;
+  pointer-events: none;
+
 }
 
 .timeline-card {
@@ -322,7 +322,7 @@ body, html, #root {
 }
 
 .timeline-title {
-   position: absolute;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%); /* Centers title perfectly in the box */
   font-size: 0.75rem;
@@ -434,5 +434,11 @@ body, html, #root {
   }
   .timeline-container {
     bottom: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .timeline-container {
+    bottom: calc(2.2rem + env(safe-area-inset-bottom, 12px));
+    max-width: 290px;
   }
 }

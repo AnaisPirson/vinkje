@@ -1,5 +1,5 @@
 export default function TimelineSlider({ years, selectedYear, onSelectYear }) {
-  if (!years || years.length <= 1) return null; // Only show if trips span multiple years
+  if (!years || years.length <= 1) return null;
 
   const minYear = Math.min(...years);
   const maxYear = Math.max(...years);
@@ -7,11 +7,14 @@ export default function TimelineSlider({ years, selectedYear, onSelectYear }) {
   return (
     <div className="timeline-container">
       <div className="timeline-card">
-        <span className="timeline-label">
-          {selectedYear === maxYear + 1 ? 'Showing: All Travels' : `Showing up to: ${selectedYear}`}
-        </span>
+        <div className="timeline-header">
+          <span className="timeline-title">Timeline</span>
+          <span className="timeline-badge">
+            {selectedYear > maxYear ? 'All Visits' : selectedYear}
+          </span>
+        </div>
         <div className="slider-wrapper">
-          <span>{minYear}</span>
+          <span className="year-mark">{minYear}</span>
           <input
             type="range"
             min={minYear}
@@ -20,7 +23,7 @@ export default function TimelineSlider({ years, selectedYear, onSelectYear }) {
             onChange={(e) => onSelectYear(Number(e.target.value))}
             className="timeline-range"
           />
-          <span>All</span>
+          <span className="year-mark">All</span>
         </div>
       </div>
     </div>
